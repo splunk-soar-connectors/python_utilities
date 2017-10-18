@@ -2,9 +2,6 @@
 # File: python_utilities_connector.py
 #
 # --
-# -----------------------------------------
-# Phantom sample App Connector python file
-# -----------------------------------------
 
 # Phantom App imports
 import phantom.app as phantom
@@ -343,7 +340,7 @@ if __name__ == '__main__':
         in_json = json.loads(in_json)
         print(json.dumps(in_json, indent=4))
 
-        connector = PythonUtilitiesConnector()
+        connector = PhantomUtilitiesConnector()
         connector.print_progress_message = True
         ret_val = connector._handle_action(json.dumps(in_json), None)
         print (json.dumps(json.loads(ret_val), indent=4))

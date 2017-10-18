@@ -2,17 +2,17 @@
     "appid"       : "f3373a58-733d-4bd7-89ac-d6ce76019eae",
     "name"      : "Python Utilities ",
     "description" : "Implements basic python functions for UI access",
-    "publisher": "Freeware",
-    "package_name": "PythonUtilities",
+    "publisher": "Robert Martin",
+    "package_name": "phantom_pythonutilities",
     "type": "generic",
-    "license": "GNU GPLv3",
+    "license": "Freeware",
     "main_module" : "python_utilities_connector.pyc",
     "app_version": "1.0.1",
     "utctime_updated": "2017-08-21T18:07:00.000000Z",
     "product_vendor": "Generic",
     "product_name": "Python Utilities",
     "product_version_regex": ".*",
-    "min_phantom_version": "1.0.0",
+    "min_phantom_version": "3.0.251",
     "logo": "pythonutilities.png",
     "configuration": {},
     "actions": [
@@ -24,12 +24,14 @@
         "read_only": true,
         "parameters": {
           "start": {
-            "description": "Starting position of the search. Defaults to 0",
+            "description": "Starting position of the search",
+            "verbose": "Defaults to 0",
             "data_type": "numeric",
             "required": false
           },
           "end": {
-            "description": "Ending position of the search. Defaults to end of string.",
+            "description": "Ending position of the search",
+            "verbose": "Defaults to end of string",
             "data_type": "numeric",
             "required": false
           },
@@ -39,12 +41,13 @@
             "required": true
           },
           "source_string": {
-            "description": "Source string.",
+            "description": "Source string",
             "data_type": "string",
             "required": true
           },
           "replace": {
-            "description": "The replacement value is only required for sub and subn actions. For a single space, use ' '. For deletion, use ''",
+            "description": "Regex replacement value",
+            "verbose": "The replacement value is only required for sub and subn actions. For a single space, use ' '. For deletion, use ''",
             "data_type": "string",
             "required": false,
             "default": " "
@@ -103,31 +106,33 @@
       },
       {
         "action": "find string",
-        "description": "Find a substring in a string and returns the index.",
+        "description": "Find a substring and return the index",
         "type": "generic",
         "identifier": "find_string",
         "read_only": true,
         "parameters": {
           "search_string": {
-            "description": "Substring to find in a string.",
+            "description": "Substring to find in a string",
             "data_type": "string",
             "primary": true,
             "required": true
           },
           "source_string": {
-            "description": "String to search with substring.",
+            "description": "String to search with substring",
             "data_type": "string",
             "primary": true,
             "required": true
           },
           "source_string_start": {
-            "description": "Starting index for search. Default is zero.",
+            "description": "Starting index for search",
+            "verbose": "Default is zero.",
             "data_type": "numeric",
             "primary": false,
             "requred": false
           },
           "source_string_end": {
-            "description": "Ending index for search. Default is string length.",
+            "description": "Ending index for search",
+            "verbose": "Default is string length.",
             "data_type": "numeric",
             "primary": false,
             "requred": false
@@ -175,19 +180,20 @@
       },
       {
         "action": "split string",
-        "description": "Use regex to split a string into a list. The separator must be a valid regex. You may also use any single separator.",
+        "description": "Use regex to split a string into a list",
+        "verbose": "The separator must be a valid regex. You may also use any single separator.",
         "type": "generic",
         "identifier": "split_string",
         "read_only": true,
         "parameters": {
           "separator": {
-            "description": "Separators to split string.",
+            "description": "Separators to split string",
             "data_type": "string",
             "primary": true,
             "required": true
           },
           "source_string": {
-            "description": "String to split.",
+            "description": "String to split",
             "data_type": "string",
             "primary": true,
             "required": true
@@ -227,19 +233,19 @@
       },
       {
         "action": "get substring",
-        "description": "Returns the substring based on the start, end, step indexes.",
+        "description": "Returns the substring based on the start, end, step indexes",
         "type": "generic",
         "identifier": "get_substring",
         "read_only": true,
         "parameters": {
           "source_string_start": {
-            "description": "Starting position of the string.",
+            "description": "Starting position of the string",
             "data_type": "numeric",
             "primary": true,
             "required": false
           },
           "source_string_end": {
-            "description": "Ending position of the string.",
+            "description": "Ending position of the string",
             "data_type": "numeric",
             "primary": true,
             "required": false
@@ -251,7 +257,7 @@
             "required": false
           },
           "source_string": {
-            "description": "Source string.",
+            "description": "Source string",
             "data_type": "string",
             "primary": true,
             "required": true
@@ -299,13 +305,13 @@
       },
       {
         "action": "get date",
-        "description": "Returns the current date and time.",
+        "description": "Returns the current date and time",
         "type": "generic",
         "identifier": "get_date",
         "read_only": true,
         "parameters": {
           "format_string": {
-            "description": "strftime formatted string to return custom results.",
+            "description": "strftime formatted string to return custom results",
             "data_type": "string",
             "required": false
           }
