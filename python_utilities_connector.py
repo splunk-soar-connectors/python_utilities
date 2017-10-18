@@ -124,7 +124,7 @@ class PhantomUtilitiesConnector(BaseConnector):
 
         try:
             source_string = param[PYTHONUTILITIES_SOURCE_STRING]
-            result = source_string.split(PYTHONUTILITIES_SPLIT_VALUE)
+            result = source_string.split(param[PYTHONUTILITIES_SPLIT_VALUE])
             action_result.add_data({'list': result})
             action_result.set_status(phantom.APP_SUCCESS)
         except Exception as e:

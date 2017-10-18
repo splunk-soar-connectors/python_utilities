@@ -1,12 +1,12 @@
 {
-    "appid"       : "f3373a58-733d-4bd7-89ac-d6ce76019eae",
-    "name"      : "Python Utilities ",
-    "description" : "Implements basic python functions for UI access",
+    "appid": "f3373a58-733d-4bd7-89ac-d6ce76019eae",
+    "name": "Python Utilities ",
+    "description": "Implements basic python functions for UI access",
     "publisher": "Robert Martin",
     "package_name": "phantom_pythonutilities",
     "type": "generic",
     "license": "Freeware",
-    "main_module" : "python_utilities_connector.pyc",
+    "main_module": "python_utilities_connector.pyc",
     "app_version": "1.0.1",
     "utctime_updated": "2017-08-21T18:07:00.000000Z",
     "product_vendor": "Generic",
@@ -16,450 +16,652 @@
     "logo": "pythonutilities.png",
     "configuration": {},
     "actions": [
-      {
-        "action": "regex function",
-        "description": "https://docs.python.org/2/library/re.html",
-        "type": "generic",
-        "identifier": "regex_function",
-        "read_only": true,
-        "render": {
-          "type": "json",
-          "width": 12,
-          "height": 5,
-          "title": "regex function"
+        {
+            "action": "regex function",
+            "description": "https://docs.python.org/2/library/re.html",
+            "type": "generic",
+            "identifier": "regex_function",
+            "read_only": true,
+            "render": {
+                "type": "json",
+                "width": 12,
+                "height": 5,
+                "title": "regex function"
+            },
+            "parameters": {
+                "start": {
+                    "description": "Starting position of the search (Default is 0)",
+                    "data_type": "numeric",
+                    "required": false
+                },
+                "end": {
+                    "description": "Ending position of the search (Default is end of string)",
+                    "data_type": "numeric",
+                    "required": false
+                },
+                "pattern": {
+                    "description": "Regex pattern",
+                    "data_type": "string",
+                    "required": true
+                },
+                "source_string": {
+                    "description": "Source string",
+                    "data_type": "string",
+                    "required": true
+                },
+                "replace": {
+                    "description": "Regex replacement value. The replacement value is only required for sub and subn actions. For a single space, use ' '. For deletion, use ''",
+                    "data_type": "string",
+                    "required": false,
+                    "default": " "
+                },
+                "action": {
+                    "description": "Action to take on string",
+                    "data_type": "string",
+                    "required": true,
+                    "default": "search",
+                    "value_list": [
+                        "search",
+                        "match",
+                        "split",
+                        "findall",
+                        "finditer",
+                        "sub",
+                        "subn"
+                    ]
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.start",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.end",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.pattern",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.source_string",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.replace",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.action",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                }
+            ],
+            "versions": "EQ(*)"
         },
-        "parameters": {
-          "start": {
-            "description": "Starting position of the search (Default is 0)",
-            "data_type": "numeric",
-            "required": false
-          },
-          "end": {
-            "description": "Ending position of the search (Default is end of string)",
-            "data_type": "numeric",
-            "required": false
-          },
-          "pattern": {
-            "description": "Regex pattern",
-            "data_type": "string",
-            "required": true
-          },
-          "source_string": {
-            "description": "Source string",
-            "data_type": "string",
-            "required": true
-          },
-          "replace": {
-            "description": "Regex replacement value. The replacement value is only required for sub and subn actions. For a single space, use ' '. For deletion, use ''",
-            "data_type": "string",
-            "required": false,
-            "default": " "
-          },
-          "action": {
-            "description": "Action to take on string",
-            "data_type": "string",
-            "required": true,
-            "default": "search",
-            "value_list": ["search", "match", "split", "findall", "finditer", "sub", "subn"]
-          }
+        {
+            "action": "find string",
+            "description": "Find a substring and return the index",
+            "type": "generic",
+            "identifier": "find_string",
+            "read_only": true,
+            "render": {
+                "type": "json",
+                "width": 12,
+                "height": 5,
+                "title": "find string"
+            },
+            "parameters": {
+                "search_string": {
+                    "description": "Substring to find in a string",
+                    "data_type": "string",
+                    "primary": true,
+                    "required": true
+                },
+                "source_string": {
+                    "description": "String to search with substring",
+                    "data_type": "string",
+                    "primary": true,
+                    "required": true
+                },
+                "source_string_start": {
+                    "description": "Starting index for search (Default is 0)",
+                    "data_type": "numeric",
+                    "primary": false,
+                    "required": false
+                },
+                "source_string_end": {
+                    "description": "Ending index for search (Default is string length)",
+                    "data_type": "numeric",
+                    "primary": false,
+                    "required": false
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.search_string",
+                    "data_type": "string",
+                    "example_values": [
+                        "beeb"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.source_string",
+                    "data_type": "string",
+                    "example_values": [
+                        "zaphod beeblebrox space"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.source_string_start",
+                    "data_type": "string",
+                    "example_values": [
+                        "2"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.source_string_end",
+                    "data_type": "string",
+                    "example_values": [
+                        "25"
+                    ]
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.search_string_index",
+                    "data_type": "string",
+                    "example_values": [
+                        7
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "versions": "EQ(*)"
         },
-        "output": [
-          {
-            "data_path": "action_result.data",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.message",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.parameter.start",
-            "data_type": "string"
-          },          
-          {
-            "data_path": "action_result.parameter.end",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.parameter.pattern",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.parameter.source_string",
-            "data_type": "string"
-          },          
-          {
-            "data_path": "action_result.parameter.replace",
-            "data_type": "string"
-          },          
-          {
-            "data_path": "action_result.parameter.action",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.status",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.summary",
-            "data_type": "string"
-          }
-        ],
-        "versions":"EQ(*)"
-      },
-      {
-        "action": "find string",
-        "description": "Find a substring and return the index",
-        "type": "generic",
-        "identifier": "find_string",
-        "read_only": true,
-        "render": {
-          "type": "json",
-          "width": 12,
-          "height": 5,
-          "title": "find string"
+        {
+            "action": "split string",
+            "description": "Use regex to split a string into a list",
+            "verbose": "The separator must be a valid regex. You may also use any single separator.",
+            "type": "generic",
+            "identifier": "split_string",
+            "read_only": true,
+            "render": {
+                "type": "json",
+                "width": 12,
+                "height": 5,
+                "title": "split string"
+            },
+            "parameters": {
+                "separator": {
+                    "description": "Separators to split string",
+                    "data_type": "string",
+                    "primary": true,
+                    "required": true
+                },
+                "source_string": {
+                    "description": "String to split",
+                    "data_type": "string",
+                    "primary": true,
+                    "required": true
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.separator",
+                    "data_type": "string",
+                    "example_values": [
+                        "b"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.source_string",
+                    "data_type": "string",
+                    "example_values": [
+                        "zaphod beeblebrox space"
+                    ]
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.list",
+                    "data_type": "string",
+                    "example_values": [
+                        "rox space"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "versions": "EQ(*)"
         },
-        "parameters": {
-          "search_string": {
-            "description": "Substring to find in a string",
-            "data_type": "string",
-            "primary": true,
-            "required": true
-          },
-          "source_string": {
-            "description": "String to search with substring",
-            "data_type": "string",
-            "primary": true,
-            "required": true
-          },
-          "source_string_start": {
-            "description": "Starting index for search (Default is 0)",
-            "data_type": "numeric",
-            "primary": false,
-            "required": false
-          },
-          "source_string_end": {
-            "description": "Ending index for search (Default is string length)",
-            "data_type": "numeric",
-            "primary": false,
-            "required": false
-          }
+        {
+            "action": "get substring",
+            "description": "Returns the substring based on the start, end, step indexes",
+            "type": "generic",
+            "identifier": "get_substring",
+            "read_only": true,
+            "render": {
+                "type": "json",
+                "width": 12,
+                "height": 5,
+                "title": "get substring"
+            },
+            "parameters": {
+                "source_string_start": {
+                    "description": "Starting position of the string",
+                    "data_type": "numeric",
+                    "primary": true,
+                    "required": false
+                },
+                "source_string_end": {
+                    "description": "Ending position of the string",
+                    "data_type": "numeric",
+                    "primary": true,
+                    "required": false
+                },
+                "source_string_step": {
+                    "description": "Step",
+                    "data_type": "numeric",
+                    "primary": true,
+                    "required": false
+                },
+                "source_string": {
+                    "description": "Source string",
+                    "data_type": "string",
+                    "primary": true,
+                    "required": true
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.source_string",
+                    "data_type": "string",
+                    "example_values": [
+                        "zaphod beeblebrox space"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.source_string_start",
+                    "data_type": "string",
+                    "example_values": [
+                        "2"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.source_string_end",
+                    "data_type": "string",
+                    "example_values": [
+                        "25"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.source_string_step",
+                    "data_type": "string",
+                    "example_values": [
+                        "3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.substring",
+                    "data_type": "string",
+                    "example_values": [
+                        "pdelr a"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "versions": "EQ(*)"
         },
-        "output": [
-          {
-            "data_path": "action_result.data",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.message",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.parameter.search_string",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.parameter.source_string",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.parameter.source_string_start",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.parameter.source_string_end",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.status",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.summary",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.data.*.search_string_index",
-            "data_type": "string"
-          }
-        ],
-        "versions":"EQ(*)"
-      },
-      {
-        "action": "split string",
-        "description": "Use regex to split a string into a list",
-        "verbose": "The separator must be a valid regex. You may also use any single separator.",
-        "type": "generic",
-        "identifier": "split_string",
-        "read_only": true,
-        "render": {
-          "type": "json",
-          "width": 12,
-          "height": 5,
-          "title": "split string"
-        },
-        "parameters": {
-          "separator": {
-            "description": "Separators to split string",
-            "data_type": "string",
-            "primary": true,
-            "required": true
-          },
-          "source_string": {
-            "description": "String to split",
-            "data_type": "string",
-            "primary": true,
-            "required": true
-          }
-        },
-        "output": [
-          {
-            "data_path": "action_result.data",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.message",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.parameter.separator",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.parameter.source_string",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.status",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.summary",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.data.*.list",
-            "data_type": "string"
-          }
-        ],
-        "versions":"EQ(*)"
-      },
-      {
-        "action": "get substring",
-        "description": "Returns the substring based on the start, end, step indexes",
-        "type": "generic",
-        "identifier": "get_substring",
-        "read_only": true,
-        "render": {
-          "type": "json",
-          "width": 12,
-          "height": 5,
-          "title": "get substring"
-        },
-        "parameters": {
-          "source_string_start": {
-            "description": "Starting position of the string",
-            "data_type": "numeric",
-            "primary": true,
-            "required": false
-          },
-          "source_string_end": {
-            "description": "Ending position of the string",
-            "data_type": "numeric",
-            "primary": true,
-            "required": false
-          },
-          "source_string_step": {
-            "description": "Step",
-            "data_type": "numeric",
-            "primary": true,
-            "required": false
-          },
-          "source_string": {
-            "description": "Source string",
-            "data_type": "string",
-            "primary": true,
-            "required": true
-          }
-        },
-        "output": [
-          {
-            "data_path": "action_result.data",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.message",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.parameter.source_string",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.parameter.source_string_start",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.parameter.source_string_end",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.parameter.source_string_step",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.status",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.summary",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.data.*.substring",
-            "data_type": "string"
-          }
-        ],
-        "versions":"EQ(*)"
-      },
-      {
-        "action": "get date",
-        "description": "Returns the current date and time",
-        "type": "generic",
-        "identifier": "get_date",
-        "read_only": true,
-        "render": {
-          "type": "json",
-          "width": 12,
-          "height": 5,
-          "title": "get date"
-        },
-        "parameters": {
-          "format_string": {
-            "description": "strftime formatted string to return custom results",
-            "data_type": "string",
-            "required": false
-          }
-        },
-        "output": [
-          {
-            "data_path": "action_result.summary",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.status",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.message",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.parameter.format_string",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.data",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.data.*.local_year",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.local_month",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.local_day",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.local_hour",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.local_minute",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.local_second",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.local_weekday",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.local_day_number",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.local_tz",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.local_iso_week",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.local_iso_weekday",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.local_custom",
-            "data_type": "string"
-          },
-          {
-            "data_path": "action_result.data.*.utc_year",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.utc_month",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.utc_day",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.utc_hour",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.utc_minute",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.utc_second",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.utc_weekday",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.utc_day_number",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.utc_tz",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.utc_iso_week",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.utc_iso_weekday",
-            "data_type": "numeric"
-          },
-          {
-            "data_path": "action_result.data.*.utc_custom",
-            "data_type": "string"
-          }
-        ],
-        "versions":"EQ(*)"
-      }
+        {
+            "action": "get date",
+            "description": "Returns the current date and time",
+            "type": "generic",
+            "identifier": "get_date",
+            "read_only": true,
+            "render": {
+                "type": "json",
+                "width": 12,
+                "height": 5,
+                "title": "get date"
+            },
+            "parameters": {
+                "format_string": {
+                    "description": "strftime formatted string to return custom results",
+                    "data_type": "string",
+                    "required": false
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.format_string",
+                    "data_type": "string",
+                    "example_values": [
+                        "%Y %I:%M%p"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.local_year",
+                    "data_type": "numeric",
+                    "example_values": [
+                        2017
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.local_month",
+                    "data_type": "numeric",
+                    "example_values": [
+                        10
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.local_day",
+                    "data_type": "numeric",
+                    "example_values": [
+                        18
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.local_hour",
+                    "data_type": "numeric",
+                    "example_values": [
+                        9
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.local_minute",
+                    "data_type": "numeric",
+                    "example_values": [
+                        31
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.local_second",
+                    "data_type": "numeric",
+                    "example_values": [
+                        54
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.local_weekday",
+                    "data_type": "numeric",
+                    "example_values": [
+                        2
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.local_day_number",
+                    "data_type": "numeric",
+                    "example_values": [
+                        291
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.local_tz",
+                    "data_type": "numeric",
+                    "example_values": [
+                        -1
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.local_iso_week",
+                    "data_type": "numeric",
+                    "example_values": [
+                        42
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.local_iso_weekday",
+                    "data_type": "numeric",
+                    "example_values": [
+                        3
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.local_custom",
+                    "data_type": "string",
+                    "example_values": [
+                        "2017 09:31AM"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.utc_year",
+                    "data_type": "numeric",
+                    "example_values": [
+                        2017
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.utc_month",
+                    "data_type": "numeric",
+                    "example_values": [
+                        10
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.utc_day",
+                    "data_type": "numeric",
+                    "example_values": [
+                        18
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.utc_hour",
+                    "data_type": "numeric",
+                    "example_values": [
+                        16
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.utc_minute",
+                    "data_type": "numeric",
+                    "example_values": [
+                        31
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.utc_second",
+                    "data_type": "numeric",
+                    "example_values": [
+                        54
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.utc_weekday",
+                    "data_type": "numeric",
+                    "example_values": [
+                        2
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.utc_day_number",
+                    "data_type": "numeric",
+                    "example_values": [
+                        291
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.utc_tz",
+                    "data_type": "numeric",
+                    "example_values": [
+                        -1
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.utc_iso_week",
+                    "data_type": "numeric",
+                    "example_values": [
+                        42
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.utc_iso_weekday",
+                    "data_type": "numeric",
+                    "example_values": [
+                        3
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.utc_custom",
+                    "data_type": "string",
+                    "example_values": [
+                        "2017 04:31PM"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "versions": "EQ(*)"
+        }
     ]
 }
