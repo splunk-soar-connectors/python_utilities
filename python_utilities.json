@@ -136,13 +136,13 @@
             "description": "Starting index for search (Default is 0)",
             "data_type": "numeric",
             "primary": false,
-            "requred": false
+            "required": false
           },
           "source_string_end": {
             "description": "Ending index for search (Default is string length)",
             "data_type": "numeric",
             "primary": false,
-            "requred": false
+            "required": false
           }
         },
         "output": [
