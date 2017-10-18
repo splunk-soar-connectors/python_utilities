@@ -22,16 +22,20 @@
         "type": "generic",
         "identifier": "regex_function",
         "read_only": true,
+        "render": {
+          "type": "json",
+          "width": 12,
+          "height": 5,
+          "title": "regex function"
+        },
         "parameters": {
           "start": {
-            "description": "Starting position of the search",
-            "verbose": "Defaults to 0",
+            "description": "Starting position of the search (Default is 0)",
             "data_type": "numeric",
             "required": false
           },
           "end": {
-            "description": "Ending position of the search",
-            "verbose": "Defaults to end of string",
+            "description": "Ending position of the search (Default is end of string)",
             "data_type": "numeric",
             "required": false
           },
@@ -46,8 +50,7 @@
             "required": true
           },
           "replace": {
-            "description": "Regex replacement value",
-            "verbose": "The replacement value is only required for sub and subn actions. For a single space, use ' '. For deletion, use ''",
+            "description": "Regex replacement value. The replacement value is only required for sub and subn actions. For a single space, use ' '. For deletion, use ''",
             "data_type": "string",
             "required": false,
             "default": " "
@@ -110,6 +113,12 @@
         "type": "generic",
         "identifier": "find_string",
         "read_only": true,
+        "render": {
+          "type": "json",
+          "width": 12,
+          "height": 5,
+          "title": "find string"
+        },
         "parameters": {
           "search_string": {
             "description": "Substring to find in a string",
@@ -124,15 +133,13 @@
             "required": true
           },
           "source_string_start": {
-            "description": "Starting index for search",
-            "verbose": "Default is zero.",
+            "description": "Starting index for search (Default is 0)",
             "data_type": "numeric",
             "primary": false,
             "requred": false
           },
           "source_string_end": {
-            "description": "Ending index for search",
-            "verbose": "Default is string length.",
+            "description": "Ending index for search (Default is string length)",
             "data_type": "numeric",
             "primary": false,
             "requred": false
@@ -185,6 +192,12 @@
         "type": "generic",
         "identifier": "split_string",
         "read_only": true,
+        "render": {
+          "type": "json",
+          "width": 12,
+          "height": 5,
+          "title": "split string"
+        },
         "parameters": {
           "separator": {
             "description": "Separators to split string",
@@ -237,6 +250,12 @@
         "type": "generic",
         "identifier": "get_substring",
         "read_only": true,
+        "render": {
+          "type": "json",
+          "width": 12,
+          "height": 5,
+          "title": "get substring"
+        },
         "parameters": {
           "source_string_start": {
             "description": "Starting position of the string",
@@ -309,6 +328,12 @@
         "type": "generic",
         "identifier": "get_date",
         "read_only": true,
+        "render": {
+          "type": "json",
+          "width": 12,
+          "height": 5,
+          "title": "get date"
+        },
         "parameters": {
           "format_string": {
             "description": "strftime formatted string to return custom results",
@@ -323,6 +348,10 @@
           },
           {
             "data_path": "action_result.status",
+            "data_type": "string"
+          },
+          {
+            "data_path": "action_result.message",
             "data_type": "string"
           },
           {
