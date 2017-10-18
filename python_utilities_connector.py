@@ -2,9 +2,6 @@
 # File: python_utilities_connector.py
 #
 # --
-# -----------------------------------------
-# Phantom sample App Connector python file
-# -----------------------------------------
 
 # Phantom App imports
 import phantom.app as phantom
@@ -127,7 +124,7 @@ class PhantomUtilitiesConnector(BaseConnector):
 
         try:
             source_string = param[PYTHONUTILITIES_SOURCE_STRING]
-            result = source_string.split(PYTHONUTILITIES_SPLIT_VALUE)
+            result = source_string.split(param[PYTHONUTILITIES_SPLIT_VALUE])
             action_result.add_data({'list': result})
             action_result.set_status(phantom.APP_SUCCESS)
         except Exception as e:
@@ -343,7 +340,7 @@ if __name__ == '__main__':
         in_json = json.loads(in_json)
         print(json.dumps(in_json, indent=4))
 
-        connector = PythonUtilitiesConnector()
+        connector = PhantomUtilitiesConnector()
         connector.print_progress_message = True
         ret_val = connector._handle_action(json.dumps(in_json), None)
         print (json.dumps(json.loads(ret_val), indent=4))
